@@ -222,7 +222,7 @@
                 row.querySelector('td:nth-child(2)').innerText = response.email;
                 row.querySelector('td:nth-child(3)').innerText = response.comment;
                 row.querySelector('td:nth-child(4)').innerText = response.created_at;
-                $("#editfeedback").modal('toggle'); 
+                $("#editFeedback").modal('toggle'); 
                 $("#feedbackEditForm")[0].reset();
             }
         });

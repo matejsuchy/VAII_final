@@ -9,6 +9,11 @@ use Aginev\Datagrid\Datagrid;
 
 class FeedbackController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -57,11 +62,9 @@ class FeedbackController extends Controller
             'comment' => 'required',
             'name' => 'required',
             'created_at' => '',
-            'user_id' => ''
+            'user_id' => 'required'
         ]);
-        if (Auth::check()) {
-            $valid_feedback['user_id'] = Auth::user()->id;
-        }
+        
         $fdbck = Feedback::create($valid_feedback);
         return response()->json($fdbck);
     }
