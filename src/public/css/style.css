@@ -1,0 +1,163 @@
+.filter-white {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(154deg)
+    brightness(106%) contrast(105%);
+}
+
+/* 
+COLOUR PALETTE
+
+Middle Green
+#4D9458
+Cerulean Frost
+#6591BA
+Steel Blue
+#487BAB
+Amaranth Purple
+#A8394E
+Deep Taupe
+#7A686B
+*/
+
+.farby {
+  background-color: #4d9458;
+  background-color: #6591ba;
+  background-color: #487bab;
+  background-color: #a8394e;
+  background-color: #7a686b;
+}
+
+.game-choose {
+  text-align: center;
+  border-radius: 1em;
+  background-color: #6591ba;
+  margin: 5px 20px;
+  padding: 3%;
+  color: white;
+}
+
+.top {
+  border: 1px solid #487bab;
+  margin: 5px 5px 0 5px;
+  border-radius: 5px;
+  padding: 30px 10px;
+  text-align: center;
+  background-color: #6591ba;
+  color: white;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: end;
+  margin: 5px 0px 10px 0px;
+}
+
+.dropdown > button {
+  background-color: #a8394e;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  font-family: "Roboto", sans-serif;
+  background-color: rgba(122, 104, 107, 0.1);
+}
+
+.blockquote {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+
+.blog-post {
+  margin: 20px 40px;
+  text-align: justify;
+}
+
+.main-content {
+  background-color: rgba(122, 104, 107, 0.2);
+  padding-bottom: 15rem;
+}
+
+.btn-socials {
+  border-radius: 50%;
+  background-color: black;
+  border: none;
+}
+
+.footer-socials {
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  padding: 10px 0;
+}
+
+h1 {
+  padding-top: 20px;
+}
+
+span.strong {
+  font-weight: bold;
+}
+
+span.underline {
+  text-decoration: underline;
+}
+
+.btn-login {
+  background-color: #4d9458;
+  border: 1px solid #4d9458;
+  animation: ease-in-out;
+}
+
+.btn-login:hover,
+.btn-login::selection {
+  background-color: rgb(77, 148, 88);
+  border: 1px solid black;
+}
+
+.btn-login > a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.matchOK {
+  color: #4d9458;
+}
+
+.matchNOK {
+  color: #a8394e;
+}
+
+.statsGrid {
+  padding: 10px;
+  margin: 20px 0px 20px 0px;
+  border-radius: 20px;
+  background-color: #487bab;
+}
+
+.typoStat {
+  background-color: #6591ba;
+}
+
+.typoStat:first-of-type {
+  border-radius: 20px 0px 0px 20px;
+}
+
+.typoStat:last-of-type {
+  border-radius: 0px 20px 20px 0px;
+}
+
+.typoStat > p {
+  text-align: center;
+  margin: none;
+}
+
+.timer {
+  font-size: 2.8rem;
+}
+
+.typingGame {
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+.textArea {
+  height: 5rem;
+}
