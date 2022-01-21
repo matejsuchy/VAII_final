@@ -58,3 +58,14 @@ Route::get('/info',  function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+// TODOITEMS
+Route::get('/tasks', [App\Http\Controllers\TodoItemController::class, 'index'])->name('tasks.index');
+
+Route::post('/tasks', [App\Http\Controllers\TodoItemController::class, 'store'])->name('tasks.store');
+
+Route::delete('/tasks/{id}', [App\Http\Controllers\TodoItemController::class, 'destroy'])->name('tasks.destroy');
+
+Route::get('/tasks/{id}/edit', [App\Http\Controllers\TodoItemController::class, 'edit'])->name('tasks.edit');
+
+Route::patch('/tasks/{id}', [App\Http\Controllers\TodoItemController::class, 'update'])->name('tasks.update');

@@ -69,4 +69,8 @@ class User extends Authenticatable
     public function record() {
         return $this->hasMany(Record::class);
     }
+
+    public function todoItems() {
+        return $this->hasMany(TodoItem::class);
+    }
 }
