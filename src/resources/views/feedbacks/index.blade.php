@@ -22,7 +22,7 @@
                 <form id="feedbackForm" class="contact-form container gx-4">
                     @csrf
                     <div class="row g-3">
-                        <div class="form-input">
+                        {{-- <div class="form-input">
                             <label for="name" class="form-label">Meno</label>
                             <input required autocomplete="name" autofocus type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Tvoje meno a priezvisko">
                             @error('name')
@@ -40,8 +40,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-
-                        </div>
+                        </div> --}}
         
                         <div class="form-input">
                             <label for="request">Tu napíš svoju požiadavku, nápad alebo odkaz</label>
@@ -79,14 +78,14 @@
                     @csrf
                     <input type="hidden" id="id" name="id"/>
                     <div class="row g-3">
-                        <div class="form-input">
+                        {{-- <div class="form-input">
                             <label for="name2" class="form-label">Meno</label>
                             <input required autocomplete="name" autofocus type="text" class="form-control @error('name2') is-invalid @enderror" id="name2" name="name2" placeholder="Tvoje meno a priezvisko">
                             @error('name2')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                    @enderror
+                            @enderror
                         </div>
         
                         <div class="form-input">
@@ -98,7 +97,7 @@
                             </span>
                         @enderror
                         </div>
-        
+         --}}
                         <div class="form-input">
                             <label for="request2">Tu napíš svoju požiadavku, nápad alebo odkaz</label>
                             <textarea required class="form-control @error('request2') is-invalid @enderror" name="request2" id="request2" placeholder="Tvoja správa"></textarea>
@@ -121,34 +120,12 @@
     </div>
 
     {!! $grid->show() !!}
-{{-- 
-     <div class="row justify-content-center container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Meno</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Odkaz</th>
-                    <th scope="col" colspan="2">Akcia</th>
-                </tr>
-            </thead>
-            @foreach($feedback_data as $feedback_row)
-                <tr>
-                    <td>{{ $feedback_row->user->name }}</td>
-                    <td>{{ $feedback_row->user->email }}</td>
-                    <td>{{ $feedback_row->user->name }}</td>
-                    <td>
-                        <a href="kontakt.php?edit=" class="btn btn-info">Edit</a>
-                        <a href="kontakt.php?delete=" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
-    </div>  --}}
+
     <script>
         let tabulka = document.querySelector('table');
         tabulka.id = "feedbackTable";
     </script>
+    {{-- ADD jQuery --}}
 <script>
     $("#feedbackForm").submit(function(e) {
         e.preventDefault();
@@ -158,11 +135,11 @@
         let cTime = current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
         let dateTime = cDate + ' ' + cTime;
 
-        let name = $("#name").val();
+        let name = "{{\Auth::user()->name}}";
         let comment = $("#request").val();
-        let email = $("#email").val();
+        let email = "{{ \Auth::user()->email }}";
         let _token = $("input[name=_token]").val();
-        let user_id = {{\Auth::user()->id}};
+        let user_id = "{{\Auth::user()->id}}";
 
         $.ajax({
             url: "{{ route('feedback.store') }}",
@@ -190,8 +167,8 @@
     function editFeedback(id) {
         $.get('/feedback/'+id, function (feedback) {
             $("#id").val(feedback.id);
-            $("#name2").val(feedback.name);
-            $("#email2").val(feedback.email);
+            // $("#name2").val(feedback.name);
+            // $("#email2").val(feedback.email);
             $("#request2").val(feedback.comment);
             $("#editFeedback").modal('toggle');
         });
@@ -200,9 +177,9 @@
     $("#feedbackEditForm").submit( function (e) {
         e.preventDefault();
         let id = $("#id").val();
-        let name = $("#name2").val();
+        let name = "{{ Auth::user()->name }}";
         let comment = $("#request2").val();
-        let email = $("#email2").val();
+        let email = "{{ Auth::user()->email }}";
         let _token = $("input[name=_token]").val();
 
         $.ajax({
