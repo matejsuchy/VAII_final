@@ -51,48 +51,5 @@
         </div>
     </div>
 </div>
-{{-- 
-<div class="container">
-    <div class="row mt-5">
-    <div class="col-lg-6">
-    <form action="{{route('tasks.store')}}" method="post">
-    <h4>Todo Form</h4>
-    @csrf
-    <div class="form-group">
-    <input name="id" type="hidden" class="form-control" value="{{ $todo->id }}">
-    <input placeholder="Text" name="text" type="text" class="form-control" value="{{ $todo->text }}" >
-    </div>
-    <button class="btn btn-success float-right">Save</button>
-    </form>
-    </div>
-    <div class="col-lg-6">
-    <h4>Todo List</h4>
-    <table class="table">
-        <tr>
-            <th>Id</th>
-            <th>Text</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        @foreach($todos as $todo)
-        <tr>
-            <td>{{$todo->id}}</td>
-            <td>{{$todo->text}}</td>
-            <td>
-            <form action="{{route('tasks.destroy',[$todo->id])}}" method="post">
-            @method('DELETE')
-            @csrf
-            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-            </form>
-            </td>
-            <td>
-            <a class="btn btn-sm btn-primary" href="{{route('tasks.showid',[$todo->id])}}" >Edit</a>
-            </td>
-        </tr>
-        @endforeach
-    </table>
-    </div>
-    </div>
-    </div> --}}
 
 @endsection

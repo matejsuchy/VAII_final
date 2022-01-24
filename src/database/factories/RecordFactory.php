@@ -16,7 +16,7 @@ class RecordFactory extends Factory
         return [
             'wpm' => $this->faker->numberBetween(10, 250),
             'accuracy' => $this->faker->numberBetween(0, 100),
-            'user_id' => 1
+            'user_id' => $this->faker->numberBetween(0, 10)
         ];
     }
 }

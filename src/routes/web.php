@@ -49,6 +49,8 @@ Route::get('/records/{record}', [App\Http\Controllers\RecordController::class, '
 
 Route::get('/records', [App\Http\Controllers\RecordController::class, 'index'])->name('records.index');
 
+Route::delete('/records/{id}', [App\Http\Controllers\RecordController::class, 'destroy'])->name('records.destroy');
+
 // INFO
 Route::get('/info',  function () {
     return view('info');

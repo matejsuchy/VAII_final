@@ -54,10 +54,10 @@
         </div>
     </div>
     <blockquote class="blockquote text-center prepis">
-        <p class="rewriteText " name="rewriteText"></p>
+        <p class="rewriteText "></p>
         <footer class="blockquote-footer autor"></footer>
     </blockquote>
-    <textarea class="textArea" name="textArea" type="textarea"></textarea>
+    <textarea class="textArea" name="textArea"></textarea>
 </div>
 
 

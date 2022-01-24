@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="container main-content">
+<div class="container main-content">
     <h1>Top 100 hráčov</h1>
     <div class="row">
         <div class="top col-md">
-            Najrychlejsie pisal <span class="hrac"><a href="#">Fero</a></span> s poctom xyz slov za minutu
+            Najrychlejsie pisal <span class="hrac"><a href="#">{{ $records->sortByDesc('wpm')->first()->user->username ?? 'Fero'}}</a></span> s poctom {{ $records->max('wpm') ?? '999'}} slov za minutu
         </div>
         <div class="top col-md">
-            Najneomylnejší hráč .....
+            Najneomylnejší hráč {{ $records->sortByDesc('accuracy')->first()->user->username ?? 'Jozo'}} s {{ $records->sortByDesc('accuracy')->first()->accuracy ?? '90' }}% presnosťou. 
         </div>
         <div class="top col-md">
             Najviac hier odohral ....
@@ -27,22 +27,32 @@
     <table class="table table-striped table-hover ">
         <thead class="table-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Meno</th>
-                <th scope="col">Priezvisko</th>
+                <th scope="col">Nickname</th>
                 <th scope="col">WPM (words per minute)</th>
                 <th scope="col">Presnosť</th>
+                <th scope="col">Dátum pridania</th>
+                <th scope="col">Akcia</th>
             </tr>
         </thead>
         @foreach($records as $record)
         <tr>
-            <td>{{ $record['id'] }}</td>
             <td>{{ $record->user->username }}</td>
-            <td>{{ $record->user->email }}</td>
             <td>{{ $record['wpm'] }}</td>
             <td>{{ $record['accuracy'] }}%</td>
+            <td>{{ $record->created_at }}</td>
+            <td>
+                @if (Auth::user()->id == $record->user_id)
+                <form action="{{ route('records.destroy', $record->id) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <div>
+                        <button type="submit" class="btn btn-link btn-lg float-end"><i class="bi bi-trash-fill"></i></button>
+                    </div>
+                </form>
+                @endif
+            </td>
         </tr>
         @endforeach
     </table>
-</main>
+</div>
 @endsection

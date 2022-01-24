@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="container main-content">
+<div class="container main-content">
     <h1>Spätná väzba od návštevníkov</h1>
     
    <!-- Button trigger modal -->
@@ -21,27 +21,7 @@
             
                 <form id="feedbackForm" class="contact-form container gx-4">
                     @csrf
-                    <div class="row g-3">
-                        {{-- <div class="form-input">
-                            <label for="name" class="form-label">Meno</label>
-                            <input required autocomplete="name" autofocus type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Tvoje meno a priezvisko">
-                            @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
-                        </div>
-        
-                        <div class="form-input">
-                            <label for="email">Tvoja mailová adresa</label>
-                            <input required autocomplete="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Tvoja mailová adresa">
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        </div> --}}
-        
+                    <div class="row g-3">        
                         <div class="form-input">
                             <label for="request">Tu napíš svoju požiadavku, nápad alebo odkaz</label>
                             <textarea required class="form-control @error('request') is-invalid @enderror" name="request" id="request" placeholder="Tvoja správa"></textarea>
@@ -65,11 +45,11 @@
 
     
     <!-- EDIT Modal -->
-    <div class="modal fade" id="editFeedback" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="editFeedback" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Upraviť spätnú väzbu</h5>
+            <h5 class="modal-title" id="staticBackdropLabel2">Upraviť spätnú väzbu</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -78,26 +58,6 @@
                     @csrf
                     <input type="hidden" id="id" name="id"/>
                     <div class="row g-3">
-                        {{-- <div class="form-input">
-                            <label for="name2" class="form-label">Meno</label>
-                            <input required autocomplete="name" autofocus type="text" class="form-control @error('name2') is-invalid @enderror" id="name2" name="name2" placeholder="Tvoje meno a priezvisko">
-                            @error('name2')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-        
-                        <div class="form-input">
-                            <label for="email2">Tvoja mailová adresa</label>
-                            <input required type="email" autocomplete="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="form-control @error('email2') is-invalid @enderror" id="email2" name="email2" placeholder="Tvoja mailová adresa">
-                            @error('email2')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                        </div>
-         --}}
                         <div class="form-input">
                             <label for="request2">Tu napíš svoju požiadavku, nápad alebo odkaz</label>
                             <textarea required class="form-control @error('request2') is-invalid @enderror" name="request2" id="request2" placeholder="Tvoja správa"></textarea>
@@ -167,8 +127,6 @@
     function editFeedback(id) {
         $.get('/feedback/'+id, function (feedback) {
             $("#id").val(feedback.id);
-            // $("#name2").val(feedback.name);
-            // $("#email2").val(feedback.email);
             $("#request2").val(feedback.comment);
             $("#editFeedback").modal('toggle');
         });
@@ -224,6 +182,6 @@
         }
     }
 </script>
-</main>
+</div>
 
 @endsection

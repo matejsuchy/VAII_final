@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="container main-content">
+<div class="container main-content">
     <h1>Informácie o strojopise</h1>
     <div class="row ">
         <!-- <img class="col-md-6 img-fluid" src="https://cdn-icons-png.flaticon.com/512/181/181526.png" alt="website">
@@ -46,5 +46,5 @@
         </p>
 
     </div>
-</main>
+</div>
 @endsection
